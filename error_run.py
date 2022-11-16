@@ -9,7 +9,7 @@ from oneflowrealesrgan import RealESRGAN
 import oneflow as torch
 from diffusers import OneFlowStableDiffusionPipeline
 
-RealESRGAN = "weights/RealESRGANx2"
+RealESRGAN_path = "weights/RealESRGANx2"
 
 model_id = "CompVis/stable-diffusion-v1-4"
 pipe = OneFlowStableDiffusionPipeline.from_pretrained(model_id)#OneFlow
@@ -22,7 +22,7 @@ with torch.autocast("cuda"):
 device = torch.device('cuda')
 
 model = RealESRGAN(device, scale=2)
-model.load_weights(RealESRGAN)
+model.load_weights(RealESRGAN_path)
 
 #path_to_image = 'inputs/lr_image.png'
 #image = Image.open(path_to_image).convert('RGB')
