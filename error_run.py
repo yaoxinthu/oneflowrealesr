@@ -15,8 +15,7 @@ model_id = "CompVis/stable-diffusion-v1-4"
 pipe = OneFlowStableDiffusionPipeline.from_pretrained(model_id)#OneFlow
 pipe = pipe.to("cuda")
 prompt = "a boy"
-with torch.autocast("cuda"):
-    image=pipe(prompt, compile_unet = False)["sample"][0]
+image=pipe(prompt, compile_unet = False).images[0]
 
 
 device = torch.device('cuda')
